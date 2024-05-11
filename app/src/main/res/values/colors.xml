@@ -8,5 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="statusBarColor">#4B8805</color>
+    <color name="lightStatusBarColor">#BF4B8805</color>
     <color name="transparentstatusBarColor">#BE8BF710</color>
+    <color name="transparentBlack">#80090909</color>
+    <color name="green">#76D805</color>
 </resources>

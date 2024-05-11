@@ -5,12 +5,20 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.tragulon.plants.screens.EditScreen
 import com.tragulon.plants.screens.FavouriteScreen
 import com.tragulon.plants.screens.HerbsScreen
+import com.tragulon.plants.screens.InfoScreen
 import com.tragulon.plants.screens.MainScreen
 import com.tragulon.plants.screens.MushroomsScreen
+import com.tragulon.plants.screens.RecepiesScreen
 import com.tragulon.plants.screens.SettingsScreen
 import com.tragulon.plants.screens.TreesScreen
+import com.tragulon.plants.screens.herbs.ScreenHA
+import com.tragulon.plants.screens.herbs.ScreenHЩ
+import com.tragulon.plants.screens.herbs.screenshadetails.ScreenAirDetails
+import com.tragulon.plants.screens.mushrooms.ScreenMA
+import com.tragulon.plants.screens.trees.ScreenTA
 
 @Composable
 fun NavGraphNavigate(context : Context, mainplants : List<Int>, navController: NavHostController) {
@@ -23,7 +31,7 @@ fun NavGraphNavigate(context : Context, mainplants : List<Int>, navController: N
             FavouriteScreen(navController = navController)
         }
         composable("SettingsScreen") {
-           SettingsScreen(navController = navController)
+            SettingsScreen(navController = navController)
         }
         composable("HerbsScreen") {
             HerbsScreen(navController = navController)
@@ -33,6 +41,30 @@ fun NavGraphNavigate(context : Context, mainplants : List<Int>, navController: N
         }
         composable("TreesScreen") {
             TreesScreen(navController = navController)
+        }
+        composable("EditScreen") {
+            EditScreen(navController = navController)
+        }
+        composable("InfoScreen") {
+            InfoScreen(navController = navController)
+        }
+        composable("RecepiesScreen") {
+            RecepiesScreen(navController = navController)
+        }
+        composable("ScreenHA") {
+            ScreenHA(navController = navController)
+        }
+        composable("ScreenHЩ") {
+            ScreenHЩ(navController = navController)
+        }
+       composable("ScreenMA") { 
+           ScreenMA(navController = navController)
+       }
+        composable("ScreenTA") {
+            ScreenTA(navController = navController)
+        }
+        composable("ScreenAirDetails") { 
+            ScreenAirDetails(navController = navController)
         }
     }
 }

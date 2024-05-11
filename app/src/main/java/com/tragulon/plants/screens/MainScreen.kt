@@ -17,8 +17,11 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Card
@@ -64,21 +67,24 @@ fun MainScreen(context : Context, mainplants : List<Int>, navController: NavCont
                 Column(modifier = Modifier.wrapContentSize(),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    Card(
-                        modifier = Modifier
-                            .size(width = 70.dp, height = 70.dp)
-                            .background(Color.Transparent),
-                        shape = RoundedCornerShape(corner = CornerSize(35.dp)),
-                        border = BorderStroke(2.dp, color = colorResource(id = R.color.statusBarColor)),
-                        elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
-                        onClick = {navController.navigate("SettingsScreen")}
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        Column(
+                        Card(
                             modifier = Modifier
-                                .fillMaxSize()
-                                .background(color = colorResource(id = R.color.white)),
-                            horizontalAlignment = Alignment.CenterHorizontally,
+                                .size(width = 70.dp, height = 70.dp)
+                                .background(Color.Transparent),
+                            shape = RoundedCornerShape(corner = CornerSize(35.dp)),
+                            border = BorderStroke(2.dp, color = colorResource(id = R.color.statusBarColor)),
+                            elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
+                            onClick = {navController.navigate("SettingsScreen")}
                         ) {
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(color = colorResource(id = R.color.white)),
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                            ) {
                                 Column (
                                     modifier = Modifier.fillMaxSize(),
                                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -95,38 +101,109 @@ fun MainScreen(context : Context, mainplants : List<Int>, navController: NavCont
                                         textAlign = TextAlign.Center, fontSize = 10.sp,
                                         fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
                                 }
+                            }
+                        }
+                        Card(
+                            modifier = Modifier
+                                .size(width = 70.dp, height = 70.dp)
+                                .background(Color.Transparent),
+                            shape = RoundedCornerShape(corner = CornerSize(35.dp)),
+                            border = BorderStroke(2.dp, color = colorResource(id = R.color.statusBarColor)),
+                            elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
+                            onClick = {navController.navigate("InfoScreen")}
+                        ) {
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(color = colorResource(id = R.color.white)),
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                            ) {
+                                Column (
+                                    modifier = Modifier.fillMaxSize(),
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                ){
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.baseline_auto_stories_24),
+                                        contentDescription = null,
+                                        tint = colorResource(id = R.color.statusBarColor),
+                                        modifier = Modifier
+                                            .padding(top = 8.dp)
+                                            .size(30.dp)
+                                    )
+                                    Text("Справочник", modifier = Modifier.fillMaxWidth(),
+                                        textAlign = TextAlign.Center, fontSize = 10.sp,
+                                        fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                }
+                            }
                         }
                     }
-                    Card(
-                        modifier = Modifier
-                            .size(width = 70.dp, height = 70.dp)
-                            .background(Color.Transparent),
-                        shape = RoundedCornerShape(corner = CornerSize(35.dp)),
-                        border = BorderStroke(2.dp, color = colorResource(id = R.color.statusBarColor)),
-                        elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
-                        onClick = {navController.navigate("FavouriteScreen")}
-                    ) {
-                        Column(
+                    Row (
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ){
+                        Card(
                             modifier = Modifier
-                                .fillMaxSize()
-                                .background(color = colorResource(id = R.color.white)),
-                            horizontalAlignment = Alignment.CenterHorizontally,
+                                .size(width = 70.dp, height = 70.dp)
+                                .background(Color.Transparent),
+                            shape = RoundedCornerShape(corner = CornerSize(35.dp)),
+                            border = BorderStroke(2.dp, color = colorResource(id = R.color.statusBarColor)),
+                            elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
+                            onClick = {navController.navigate("FavouriteScreen")}
                         ) {
-                            Column (
-                                modifier = Modifier.fillMaxSize(),
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(color = colorResource(id = R.color.white)),
                                 horizontalAlignment = Alignment.CenterHorizontally,
-                            ){
-                                Icon(
-                                    imageVector = Icons.Default.Favorite,
-                                    contentDescription = null,
-                                    tint = colorResource(id = R.color.statusBarColor),
-                                    modifier = Modifier
-                                        .padding(top = 8.dp)
-                                        .size(30.dp)
-                                )
-                                Text("Избранное", modifier = Modifier.fillMaxWidth(),
-                                    textAlign = TextAlign.Center, fontSize = 10.sp,
-                                    fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                            ) {
+                                Column (
+                                    modifier = Modifier.fillMaxSize(),
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                ){
+                                    Icon(
+                                        imageVector = Icons.Default.Favorite,
+                                        contentDescription = null,
+                                        tint = colorResource(id = R.color.statusBarColor),
+                                        modifier = Modifier
+                                            .padding(top = 8.dp)
+                                            .size(30.dp)
+                                    )
+                                    Text("Избранное", modifier = Modifier.fillMaxWidth(),
+                                        textAlign = TextAlign.Center, fontSize = 10.sp,
+                                        fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                }
+                            }
+                        }
+                        Card(
+                            modifier = Modifier
+                                .size(width = 70.dp, height = 70.dp)
+                                .background(Color.Transparent),
+                            shape = RoundedCornerShape(corner = CornerSize(35.dp)),
+                            border = BorderStroke(2.dp, color = colorResource(id = R.color.statusBarColor)),
+                            elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
+                            onClick = {navController.navigate("RecepiesScreen")}
+                        ) {
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(color = colorResource(id = R.color.white)),
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                            ) {
+                                Column (
+                                    modifier = Modifier.fillMaxSize(),
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                ){
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.baseline_edit_note_24),
+                                        contentDescription = null,
+                                        tint = colorResource(id = R.color.statusBarColor),
+                                        modifier = Modifier
+                                            .padding(top = 3.dp)
+                                            .size(35.dp)
+                                    )
+                                    Text("Рецепты", modifier = Modifier.fillMaxWidth(),
+                                        textAlign = TextAlign.Center, fontSize = 10.sp,
+                                        fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                }
                             }
                         }
                     }
@@ -137,7 +214,7 @@ fun MainScreen(context : Context, mainplants : List<Int>, navController: NavCont
                         shape = RoundedCornerShape(corner = CornerSize(35.dp)),
                         border = BorderStroke(2.dp, color = colorResource(id = R.color.statusBarColor)),
                         elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
-                        onClick = {}
+                        onClick = {navController.navigate("EditScreen")}
                     ) {
                         Column(
                             modifier = Modifier
@@ -150,14 +227,14 @@ fun MainScreen(context : Context, mainplants : List<Int>, navController: NavCont
                                 horizontalAlignment = Alignment.CenterHorizontally,
                             ){
                                 Icon(
-                                    imageVector = Icons.Default.Search,
+                                    imageVector = Icons.Default.Edit,
                                     contentDescription = null,
                                     tint = colorResource(id = R.color.statusBarColor),
                                     modifier = Modifier
                                         .padding(top = 8.dp)
                                         .size(30.dp)
                                 )
-                                Text("Поиск", modifier = Modifier.fillMaxWidth(),
+                                Text("Записи", modifier = Modifier.fillMaxWidth(),
                                     textAlign = TextAlign.Center, fontSize = 10.sp,
                                     fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
                             }
