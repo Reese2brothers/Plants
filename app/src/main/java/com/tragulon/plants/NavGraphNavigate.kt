@@ -14,14 +14,16 @@ import com.tragulon.plants.screens.MushroomsScreen
 import com.tragulon.plants.screens.RecepiesScreen
 import com.tragulon.plants.screens.SettingsScreen
 import com.tragulon.plants.screens.TreesScreen
+import com.tragulon.plants.screens.database.AppDatabase
 import com.tragulon.plants.screens.herbs.ScreenHA
 import com.tragulon.plants.screens.herbs.ScreenHЩ
 import com.tragulon.plants.screens.herbs.screenshadetails.ScreenAirDetails
+import com.tragulon.plants.screens.herbs.screenshadetails.ScreenAltheaDetails
 import com.tragulon.plants.screens.mushrooms.ScreenMA
 import com.tragulon.plants.screens.trees.ScreenTA
 
 @Composable
-fun NavGraphNavigate(context : Context, mainplants : List<Int>, navController: NavHostController) {
+fun NavGraphNavigate(database: AppDatabase, context : Context, mainplants : List<Int>, navController: NavHostController) {
 
     NavHost(navController = navController, startDestination = "MainScreen"){
         composable("MainScreen"){
@@ -43,7 +45,7 @@ fun NavGraphNavigate(context : Context, mainplants : List<Int>, navController: N
             TreesScreen(navController = navController)
         }
         composable("EditScreen") {
-            EditScreen(navController = navController)
+            EditScreen(mainplants)
         }
         composable("InfoScreen") {
             InfoScreen(navController = navController)
@@ -65,6 +67,9 @@ fun NavGraphNavigate(context : Context, mainplants : List<Int>, navController: N
         }
         composable("ScreenAirDetails") { 
             ScreenAirDetails(navController = navController)
+        }
+        composable("ScreenAltheaDetails") {
+            ScreenAltheaDetails()
         }
     }
 }

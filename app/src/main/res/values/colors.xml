@@ -12,4 +12,6 @@
     <color name="transparentstatusBarColor">#BE8BF710</color>
     <color name="transparentBlack">#80090909</color>
     <color name="green">#76D805</color>
+    <color name="trWhite">#99FBFBFB</color>
+    <color name="orange">#FFC107</color>
 </resources>

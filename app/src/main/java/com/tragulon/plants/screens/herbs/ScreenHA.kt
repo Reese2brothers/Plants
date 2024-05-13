@@ -26,8 +26,11 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -43,80 +46,74 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.tragulon.plants.R
+import kotlinx.coroutines.launch
+import okhttp3.internal.filterList
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenHA(navController: NavController){
-    val listHA = listOf("Аир обыкновенный")
-    val listImageHA = listOf(R.drawable.air)
-    var searchText by rememberSaveable { mutableStateOf("") }
+    val listHA = listOf("Аир обыкновенный", "Алтей лекарственный")
+    val listImageHA = listOf(R.drawable.air, R.drawable.althea)
+    val searchText by rememberSaveable { mutableStateOf("") }
+    var filteredList by remember { mutableStateOf(listHA) }
+
+    LaunchedEffect(searchText) {
+        filteredList = listHA.filter { it.contains(searchText, ignoreCase = true) }
+    }
 
     Column {
-        OutlinedTextField(
-            value = searchText,
-            onValueChange = { searchText = it },
-            label = { Text("Поиск", color = colorResource(id = R.color.statusBarColor), fontSize = 16.sp)  },
-            textStyle = TextStyle(color = colorResource(id = R.color.statusBarColor), fontSize = 24.sp),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(4.dp),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                focusedBorderColor = colorResource(id = R.color.green),
-                unfocusedBorderColor = colorResource(id = R.color.statusBarColor)
-            ),
-            leadingIcon = {
-                Icon(Icons.Filled.Search, contentDescription = "Иконка поиска", tint = colorResource(id = R.color.statusBarColor))
-            },
-            trailingIcon = {
-                if (searchText.isNotEmpty()) {
-                    IconButton(onClick = { searchText = "" }) {
-                        Icon(Icons.Filled.Close, contentDescription = "Очистить", tint = colorResource(id = R.color.statusBarColor))
-                    }
-                }
-            }
-        )
-        LazyColumn(){
-            itemsIndexed(listHA.filter { it.contains(searchText, ignoreCase = true) }){index, itemHA ->
-                Card (modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-                    .padding(2.dp)
-                    .background(Color.Transparent),
-                    shape = RoundedCornerShape(corner = CornerSize(8.dp)),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 5.dp),
-                    border = BorderStroke(1.dp, color = colorResource(id = R.color.statusBarColor)),
-                    onClick = { navigateToScreenAirDetails(listHA[index], navController) })
-                {
-                    Box(
-                        modifier = Modifier.fillMaxSize()
-                    ) {
-                        Image(painter = painterResource(id = listImageHA[index]), contentDescription = "air",
-                            modifier = Modifier.fillMaxSize(),
-                            contentScale = ContentScale.Crop)
-                        Column(
-                            verticalArrangement = Arrangement.Bottom,
-                            horizontalAlignment = Alignment.CenterHorizontally,
+            LazyColumn() {
+                itemsIndexed(filteredList) { index, itemHA ->
+                    Card(modifier = Modifier
+                        .fillMaxWidth()
+                        .height(200.dp)
+                        .padding(2.dp)
+                        .background(Color.Transparent),
+                        shape = RoundedCornerShape(corner = CornerSize(8.dp)),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 5.dp),
+                        border = BorderStroke(
+                            1.dp,
+                            color = colorResource(id = R.color.statusBarColor)
+                        ),
+                        onClick = { navigateToScreenADetails(listHA[index], navController) })
+                    {
+                        Box(
                             modifier = Modifier.fillMaxSize()
-                        ){
-                            Text(text = listHA[index], modifier = Modifier
-                                .fillMaxWidth()
-                                .background(color = colorResource(id = R.color.lightStatusBarColor)),
-                                fontSize = 34.sp, textAlign = TextAlign.Center,
-                                fontWeight = FontWeight.Bold, color = colorResource(id = R.color.white)
+                        ) {
+                            Image(
+                                painter = painterResource(id = listImageHA[index]),
+                                contentDescription = "",
+                                modifier = Modifier.fillMaxSize(),
+                                contentScale = ContentScale.Crop
                             )
+                            Column(
+                                verticalArrangement = Arrangement.Bottom,
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                modifier = Modifier.fillMaxSize()
+                            ) {
+                                Text(
+                                    text = listHA[index],
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .background(color = colorResource(id = R.color.lightStatusBarColor)),
+                                    fontSize = 24.sp,
+                                    textAlign = TextAlign.Center,
+                                    fontWeight = FontWeight.Bold,
+                                    color = colorResource(id = R.color.white)
+                                )
+                            }
                         }
                     }
-
                 }
             }
-        }
     }
 }
 
-private fun navigateToScreenAirDetails(air: String, navController : NavController) {
-    when (air) {
+private fun navigateToScreenADetails(a: String, navController : NavController) {
+    when (a) {
         "Аир обыкновенный" -> navController.navigate("ScreenAirDetails")
+        "Алтей лекарственный" -> navController.navigate("ScreenAltheaDetails")
         // добавьте больше букв и экранов по мере необходимости
-        else -> println("Экран для буквы $air не найден")
+        else -> println("Экран для буквы $a не найден")
     }
 }

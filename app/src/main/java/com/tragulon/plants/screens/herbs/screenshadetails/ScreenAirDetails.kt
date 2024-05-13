@@ -1,8 +1,6 @@
 package com.tragulon.plants.screens.herbs.screenshadetails
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,33 +13,44 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.tragulon.plants.R
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
+import com.tragulon.plants.screens.viewmodels.FavouriteViewModel
+import kotlinx.coroutines.launch
 
 
 @Composable
 fun ScreenAirDetails(navController: NavController){
     val images = listOf(R.drawable.air, R.drawable.airr, R.drawable.airrr, R.drawable.airrrr)
     val pagerState = rememberPagerState( initialPage = 0)
-    var isFavorite by rememberSaveable { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
+    val viewModel: FavouriteViewModel = hiltViewModel()
+    val favouriteItems by viewModel.favourites.collectAsState(initial = emptyList())
+    var isFavorite by remember { mutableStateOf(false) }
+
+    LaunchedEffect(favouriteItems) {
+        isFavorite = favouriteItems.any { it.imageResId == R.drawable.air && it.title == "Аир обыкновенный" }
+    }
 Box(
     modifier = Modifier.fillMaxSize()
 ) {
@@ -56,8 +65,8 @@ Box(
            contentAlignment = Alignment.BottomCenter
        ) {
            HorizontalPager(state = pagerState, modifier = Modifier
-           .fillMaxWidth()
-           .height(250.dp), count = 4) { page ->
+               .fillMaxWidth()
+               .height(250.dp), count = 4) { page ->
            Box(modifier = Modifier.fillMaxSize()) {
                Image(
                    painter = painterResource(id = images[page]),
@@ -71,19 +80,27 @@ Box(
            HorizontalPagerIndicator(
                pagerState = pagerState,
                modifier = Modifier
-                   .padding(bottom = 10.dp)
-                   .background(color = colorResource(id = R.color.lightStatusBarColor)),
+                   .padding(bottom = 10.dp),
                activeColor = Color.White,
                inactiveColor = colorResource(id = R.color.green),
                indicatorHeight = 10.dp,
                indicatorWidth = 10.dp
            )
-           IconButton(onClick = { isFavorite = !isFavorite }, // Обработчик нажатия на иконку
-               modifier = Modifier.align(Alignment.TopEnd) // Располагаем иконку в верхнем правом углу
+           IconButton(onClick = {
+               scope.launch {
+                   if (isFavorite) {
+                       viewModel.removeFromFavourites(R.drawable.air, "Аир обыкновенный", "ScreenAirDetails")
+                       isFavorite = !isFavorite
+                   } else {
+                       viewModel.addToFavourites(R.drawable.air, "Аир обыкновенный",  "ScreenAirDetails")
+                       isFavorite = !isFavorite
+                   }
+               }},
+               modifier = Modifier.align(Alignment.TopEnd)
            ) {
                Icon(
-                   painter = painterResource(id = if (isFavorite) R.drawable.baseline_favorite_white_24
-                   else R.drawable.baseline_favorite_red_24),
+                   painter = painterResource(id = if (isFavorite) R.drawable.baseline_favorite_red_24
+                   else R.drawable.baseline_favorite_white_24),
                    contentDescription = "Favorite",
                    tint = if (isFavorite) Color.Red else Color.White
                )
