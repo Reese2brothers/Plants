@@ -1,10 +1,10 @@
-package com.tragulon.plants.screens.viewmodels
+package com.tragulon.plants.viewmodels
 
 import androidx.compose.runtime.MutableState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tragulon.plants.screens.database.EditDao
-import com.tragulon.plants.screens.database.EditEntity
+import com.tragulon.plants.database.EditDao
+import com.tragulon.plants.database.EditEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first

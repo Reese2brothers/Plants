@@ -1,4 +1,4 @@
-package com.tragulon.plants.screens
+package com.tragulon.plants
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -1,9 +1,10 @@
-package com.tragulon.plants.screens.di
+package com.tragulon.plants.di
 
 import android.content.Context
-import com.tragulon.plants.screens.database.AppDatabase
-import com.tragulon.plants.screens.database.EditDao
-import com.tragulon.plants.screens.database.FavouriteDao
+import com.tragulon.plants.database.AppDatabase
+import com.tragulon.plants.database.EditDao
+import com.tragulon.plants.database.FavouriteDao
+import com.tragulon.plants.database.RecepiesDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,5 +32,11 @@ class RoomModule {
     @Provides
     fun provideEditDao(appDatabase : AppDatabase): EditDao {
         return appDatabase.editDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideRecepiesDao(appDatabase : AppDatabase): RecepiesDao {
+        return appDatabase.recepiesDao()
     }
 }

@@ -1,10 +1,10 @@
-package com.tragulon.plants.screens.viewmodels
+package com.tragulon.plants.viewmodels
 
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tragulon.plants.screens.database.FavouriteDao
-import com.tragulon.plants.screens.database.FavouriteEntity
+import com.tragulon.plants.database.FavouriteDao
+import com.tragulon.plants.database.FavouriteEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch

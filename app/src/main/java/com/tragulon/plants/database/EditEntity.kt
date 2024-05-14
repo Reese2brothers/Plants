@@ -1,4 +1,4 @@
-package com.tragulon.plants.screens.database
+package com.tragulon.plants.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

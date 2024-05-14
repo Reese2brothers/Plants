@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.ui.res.colorResource
 import androidx.navigation.compose.rememberNavController
 import androidx.room.Database
-import com.tragulon.plants.screens.database.AppDatabase
+import com.tragulon.plants.database.AppDatabase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

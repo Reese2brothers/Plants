@@ -1,14 +1,15 @@
-package com.tragulon.plants.screens.database
+package com.tragulon.plants.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [FavouriteEntity::class, EditEntity::class], version = 1)
+@Database(entities = [FavouriteEntity::class, EditEntity::class, RecepiesEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun favouriteDao(): FavouriteDao
     abstract fun editDao(): EditDao
+    abstract fun recepiesDao(): RecepiesDao
 
 
     companion object {

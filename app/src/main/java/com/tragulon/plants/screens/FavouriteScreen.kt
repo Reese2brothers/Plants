@@ -42,7 +42,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.tragulon.plants.R
-import com.tragulon.plants.screens.viewmodels.FavouriteViewModel
+import com.tragulon.plants.viewmodels.FavouriteViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)

@@ -11,10 +11,12 @@ import com.tragulon.plants.screens.HerbsScreen
 import com.tragulon.plants.screens.InfoScreen
 import com.tragulon.plants.screens.MainScreen
 import com.tragulon.plants.screens.MushroomsScreen
+import com.tragulon.plants.screens.RecepiesDetailsScreen
 import com.tragulon.plants.screens.RecepiesScreen
 import com.tragulon.plants.screens.SettingsScreen
 import com.tragulon.plants.screens.TreesScreen
-import com.tragulon.plants.screens.database.AppDatabase
+import com.tragulon.plants.database.AppDatabase
+import com.tragulon.plants.screens.NewRecepiesScreen
 import com.tragulon.plants.screens.herbs.ScreenHA
 import com.tragulon.plants.screens.herbs.ScreenHЩ
 import com.tragulon.plants.screens.herbs.screenshadetails.ScreenAirDetails
@@ -52,6 +54,12 @@ fun NavGraphNavigate(database: AppDatabase, context : Context, mainplants : List
         }
         composable("RecepiesScreen") {
             RecepiesScreen(navController = navController)
+        }
+        composable("NewRecepiesScreen") {
+            NewRecepiesScreen(navController = navController)
+        }
+        composable("RecepiesDetailsScreen/{title}/{details}/{id}") { backStackEntry ->
+            RecepiesDetailsScreen(backStackEntry, navController = navController)
         }
         composable("ScreenHA") {
             ScreenHA(navController = navController)

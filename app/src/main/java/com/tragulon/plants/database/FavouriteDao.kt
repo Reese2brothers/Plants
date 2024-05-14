@@ -1,4 +1,4 @@
-package com.tragulon.plants.screens.database
+package com.tragulon.plants.database
 
 import androidx.room.Dao
 import androidx.room.Delete

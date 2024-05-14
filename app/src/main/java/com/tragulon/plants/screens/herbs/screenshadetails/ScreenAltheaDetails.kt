@@ -35,7 +35,7 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import com.tragulon.plants.R
-import com.tragulon.plants.screens.viewmodels.FavouriteViewModel
+import com.tragulon.plants.viewmodels.FavouriteViewModel
 import kotlinx.coroutines.launch
 
 @Composable
