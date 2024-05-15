@@ -13,9 +13,9 @@ import com.tragulon.plants.screens.MainScreen
 import com.tragulon.plants.screens.MushroomsScreen
 import com.tragulon.plants.screens.RecepiesDetailsScreen
 import com.tragulon.plants.screens.RecepiesScreen
-import com.tragulon.plants.screens.SettingsScreen
 import com.tragulon.plants.screens.TreesScreen
 import com.tragulon.plants.database.AppDatabase
+import com.tragulon.plants.screens.InternetScreen
 import com.tragulon.plants.screens.NewRecepiesScreen
 import com.tragulon.plants.screens.herbs.ScreenHA
 import com.tragulon.plants.screens.herbs.ScreenHЩ
@@ -34,8 +34,8 @@ fun NavGraphNavigate(database: AppDatabase, context : Context, mainplants : List
         composable("FavouriteScreen") {
             FavouriteScreen(navController = navController)
         }
-        composable("SettingsScreen") {
-            SettingsScreen(navController = navController)
+        composable("InternetScreen") {
+            InternetScreen(navController = navController)
         }
         composable("HerbsScreen") {
             HerbsScreen(navController = navController)

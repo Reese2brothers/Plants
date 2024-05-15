@@ -36,4 +36,9 @@ class EditViewModel @Inject constructor(var editDao : EditDao) : ViewModel(){
             editDao.updateEdit(EditEntity(text))
         }
     }
+    fun deleteAll(){
+        viewModelScope.launch {
+            editDao.deleteAll()
+        }
+    }
 }

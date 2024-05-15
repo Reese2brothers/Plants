@@ -77,7 +77,7 @@ fun MainScreen(context : Context, mainplants : List<Int>, navController: NavCont
                             shape = RoundedCornerShape(corner = CornerSize(35.dp)),
                             border = BorderStroke(2.dp, color = colorResource(id = R.color.statusBarColor)),
                             elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
-                            onClick = {navController.navigate("SettingsScreen")}
+                            onClick = {navController.navigate("InternetScreen")}
                         ) {
                             Column(
                                 modifier = Modifier
@@ -90,14 +90,14 @@ fun MainScreen(context : Context, mainplants : List<Int>, navController: NavCont
                                     horizontalAlignment = Alignment.CenterHorizontally,
                                 ){
                                     Icon(
-                                        imageVector = Icons.Default.Settings,
+                                        painter = painterResource(id = R.drawable.baseline_language_24),
                                         contentDescription = null,
                                         tint = colorResource(id = R.color.statusBarColor),
                                         modifier = Modifier
                                             .padding(top = 8.dp)
                                             .size(30.dp)
                                     )
-                                    Text("Настройки", modifier = Modifier.fillMaxWidth(),
+                                    Text("Интернет", modifier = Modifier.fillMaxWidth(),
                                         textAlign = TextAlign.Center, fontSize = 10.sp,
                                         fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
                                 }

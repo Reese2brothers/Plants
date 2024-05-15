@@ -5,6 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 
 @Composable
-fun SettingsScreen(navController: NavController) {
-    Text(text = "Настройки")
+fun InternetScreen(navController: NavController) {
+    Text(text = "Internet")
 }

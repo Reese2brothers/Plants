@@ -21,6 +21,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
@@ -31,7 +34,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -55,6 +62,8 @@ fun RecepiesScreen(navController: NavController) {
     val viewModel: RecepiesViewModel = hiltViewModel()
     val recepiesItems by viewModel.recepies.collectAsState(initial = emptyList())
     val scope = rememberCoroutineScope()
+    var showIdDialog = remember { mutableStateOf(false) }
+
     Box (
         modifier = Modifier.fillMaxSize()
     ){
@@ -111,7 +120,7 @@ fun RecepiesScreen(navController: NavController) {
                                     textAlign = TextAlign.Center, fontSize = 26.sp,
                                     fontWeight = FontWeight.Bold, color = colorResource(id = R.color.white)
                                 )
-                                IconButton(onClick = { viewModel.deleteText(item.id, item.title, item.details) }) {
+                                IconButton(onClick = { showIdDialog.value = true }) {
                                     Icon(
                                         Icons.Default.Delete,
                                         contentDescription = "delete",
@@ -125,6 +134,33 @@ fun RecepiesScreen(navController: NavController) {
                                 textAlign = TextAlign.Start, fontSize = 16.sp,
                                 fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor)
                             )
+                            if (showIdDialog.value) {
+                                AlertDialog(
+                                    onDismissRequest = {
+                                        showIdDialog.value = false
+                                    },
+                                    title = { Text("Подтверждение", color = colorResource(id = R.color.statusBarColor)) },
+                                    text = { Text("Вы уверены, что хотите удалить элемент из списка?",
+                                        color = colorResource(id = R.color.statusBarColor)) },
+                                    confirmButton = {
+                                        Button(colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.statusBarColor)),
+                                            onClick = {
+                                                    viewModel.deleteText(item.id, item.title, item.details)
+                                                showIdDialog.value = false
+                                            }) {
+                                            Text("Да", color = colorResource(id = R.color.white))
+                                        }
+                                    },
+                                    dismissButton = {
+                                        Button(colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.statusBarColor)),
+                                            onClick = {
+                                                showIdDialog.value = false
+                                            }) {
+                                            Text("Нет", color = colorResource(id = R.color.white))
+                                        }
+                                    }
+                                )
+                            }
                         }
                     }
                 }

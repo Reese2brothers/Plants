@@ -16,6 +16,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -56,6 +59,7 @@ fun EditScreen(mainplants : List<Int>) {
     val saveTextColor = rememberSaveable { mutableStateOf(R.color.red) }
     val viewModel: EditViewModel = hiltViewModel()
     val currentText = remember { mutableStateOf("") }
+    var showIdDialog = remember { mutableStateOf(false) }
 
     LaunchedEffect(key1 = viewModel) {
         viewModel.loadInitialData(currentText)
@@ -121,7 +125,7 @@ fun EditScreen(mainplants : List<Int>) {
                             Text(text = saveText.value, fontSize = 10.sp, fontWeight = FontWeight.Bold, color = colorResource(id = saveTextColor.value))
                         }
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            IconButton(onClick = { currentText.value = "" }) {
+                            IconButton(onClick = { showIdDialog.value = true }) {
                                 Icon(
                                     Icons.Default.Clear,
                                     contentDescription = "Очистить поле",
@@ -129,6 +133,34 @@ fun EditScreen(mainplants : List<Int>) {
                                 )
                             }
                             Text(text = "очистить", fontSize = 10.sp, fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                            if (showIdDialog.value) {
+                                AlertDialog(
+                                    onDismissRequest = {
+                                        showIdDialog.value = false
+                                    },
+                                    title = { Text("Подтверждение", color = colorResource(id = R.color.statusBarColor)) },
+                                    text = { Text("Вы действительно хотите удалить весь текст?",
+                                        color = colorResource(id = R.color.statusBarColor)) },
+                                    confirmButton = {
+                                        Button(colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.statusBarColor)),
+                                            onClick = {
+                                                currentText.value = ""
+                                                viewModel.deleteAll()
+                                                showIdDialog.value = false
+                                            }) {
+                                            Text("Да", color = colorResource(id = R.color.white))
+                                        }
+                                    },
+                                    dismissButton = {
+                                        Button(colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.statusBarColor)),
+                                            onClick = {
+                                                showIdDialog.value = false
+                                            }) {
+                                            Text("Нет", color = colorResource(id = R.color.white))
+                                        }
+                                    }
+                                )
+                            }
                         }
                     }
                 }
