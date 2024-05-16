@@ -35,7 +35,7 @@ fun NavGraphNavigate(database: AppDatabase, context : Context, mainplants : List
             FavouriteScreen(navController = navController)
         }
         composable("InternetScreen") {
-            InternetScreen(navController = navController)
+            InternetScreen(context)
         }
         composable("HerbsScreen") {
             HerbsScreen(navController = navController)

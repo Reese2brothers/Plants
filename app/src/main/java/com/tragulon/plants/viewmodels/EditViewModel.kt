@@ -7,7 +7,6 @@ import com.tragulon.plants.database.EditDao
 import com.tragulon.plants.database.EditEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,11 +28,6 @@ class EditViewModel @Inject constructor(var editDao : EditDao) : ViewModel(){
                     currentText.value = it.first().text
                 }
             }
-        }
-    }
-    fun updateText(text: String) {
-        viewModelScope.launch {
-            editDao.updateEdit(EditEntity(text))
         }
     }
     fun deleteAll(){

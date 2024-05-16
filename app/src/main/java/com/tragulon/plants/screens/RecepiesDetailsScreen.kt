@@ -40,8 +40,8 @@ fun RecepiesDetailsScreen(backStackEntry: NavBackStackEntry, navController : Nav
     val details = arguments?.getString("details") ?: ""
     val id = arguments?.getString("id")?.toIntOrNull() ?: 0
     val viewModel: RecepiesViewModel = hiltViewModel()
-    val titleText = remember { mutableStateOf(title) }
-    val detailsText = remember { mutableStateOf(details) }
+    val titleText = rememberSaveable { mutableStateOf(title) }
+    val detailsText = rememberSaveable { mutableStateOf(details) }
     val imageSave = rememberSaveable{(mutableStateOf(R.drawable.baseline_save_as_red))}
 
     Box(modifier = Modifier.fillMaxSize()) {

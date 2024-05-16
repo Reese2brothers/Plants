@@ -36,8 +36,8 @@ import com.tragulon.plants.viewmodels.RecepiesViewModel
 @Composable
 fun NewRecepiesScreen(navController : NavController) {
     val viewModel: RecepiesViewModel = hiltViewModel()
-    val titleText = remember { mutableStateOf("") }
-    val detailsText = remember { mutableStateOf("") }
+    val titleText = rememberSaveable { mutableStateOf("") }
+    val detailsText = rememberSaveable { mutableStateOf("") }
     val imageSave = rememberSaveable{(mutableStateOf(R.drawable.baseline_save_as_red))}
 
     Box(modifier = Modifier.fillMaxSize()) {

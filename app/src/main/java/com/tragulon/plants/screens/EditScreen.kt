@@ -58,7 +58,7 @@ fun EditScreen(mainplants : List<Int>) {
     val imageSave = rememberSaveable { mutableStateOf(R.drawable.baseline_done_red) }
     val saveTextColor = rememberSaveable { mutableStateOf(R.color.red) }
     val viewModel: EditViewModel = hiltViewModel()
-    val currentText = remember { mutableStateOf("") }
+    val currentText = rememberSaveable { mutableStateOf("") }
     var showIdDialog = remember { mutableStateOf(false) }
 
     LaunchedEffect(key1 = viewModel) {
@@ -85,8 +85,8 @@ fun EditScreen(mainplants : List<Int>) {
                 textColor = colorResource(id = R.color.statusBarColor)
             ),
             value = currentText.value, onValueChange = { newValue ->
-                currentText.value = newValue
-                viewModel.updateText(newValue)
+               currentText.value = newValue
+                viewModel.addToEditEntity(newValue)
                 imageSave.value = R.drawable.baseline_done_red
                 saveTextColor.value = R.color.red
             },
