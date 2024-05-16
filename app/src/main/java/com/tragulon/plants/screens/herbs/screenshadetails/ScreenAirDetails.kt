@@ -55,7 +55,9 @@ Box(
     modifier = Modifier.fillMaxSize()
 ) {
    Column(
-       modifier = Modifier.fillMaxSize(),
+       modifier = Modifier
+           .fillMaxSize()
+           .verticalScroll(rememberScrollState()),
        horizontalAlignment = Alignment.CenterHorizontally
    ) {
        Box(

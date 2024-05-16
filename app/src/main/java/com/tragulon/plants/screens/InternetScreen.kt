@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.rememberScrollableState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,6 +16,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
@@ -46,15 +50,16 @@ fun InternetScreen(context : Context) {
     Box (modifier = Modifier.fillMaxSize()){
         Column (
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())
                 .background(color = colorResource(id = R.color.white))
         ) {
             Icon(
-               painter = painterResource(id = R.drawable.baseline_language_24),
+               painter = painterResource(id = R.drawable.earth),
                 contentDescription = "Очистить поле",
                 tint = colorResource(id = R.color.statusBarColor),
-                modifier = Modifier.size(100.dp).padding(top = 16.dp)
+                modifier = Modifier
+                    .size(100.dp)
+                    .padding(top = 16.dp)
             )
             Text(text = "Используйте интернет, чтобы найти нужную вам информацию по растениям!",  modifier = Modifier
                 .fillMaxWidth()
@@ -80,7 +85,10 @@ fun InternetScreen(context : Context) {
                     value = text.value,
                     onValueChange = { newValue -> text.value = newValue
                     },
-                    modifier = Modifier.fillMaxWidth().wrapContentHeight().padding(top = 100.dp, start = 8.dp, end = 8.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentHeight()
+                        .padding(top = 100.dp, start = 8.dp, end = 8.dp),
                     textStyle = TextStyle(fontSize = 24.sp),
                     label = {
                         Text(text = "начните свой поиск...", color = colorResource(id = R.color.orange),
@@ -122,17 +130,21 @@ fun InternetScreen(context : Context) {
                                     Toast.makeText(context, "Неверный URL", Toast.LENGTH_SHORT).show()
                                 }
                             }
-                        }, modifier = Modifier.size(60.dp).padding(top = 8.dp)) {
+                        }, modifier = Modifier
+                            .size(60.dp)
+                            .padding(top = 8.dp)) {
                             Icon(
-                                painter = painterResource(id = R.drawable.websearch),
+                                painter = painterResource(id = R.drawable.searchto),
                                 contentDescription = "Search",
                                 tint = colorResource(id = R.color.statusBarColor),
-                                modifier = Modifier.size(60.dp).padding(end = 16.dp, top = 8.dp)
+                                modifier = Modifier
+                                    .size(60.dp)
+                                    .padding(end = 16.dp, top = 8.dp)
                             )
                         }
                         Text(text = "Поиск...",  modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = 4.dp, end = 16.dp)
+                            .padding(top = 4.dp, end = 16.dp, bottom = 8.dp)
                             .background(colorResource(id = R.color.white)),
                             textAlign = TextAlign.End, fontSize = 12.sp,
                             fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))

@@ -50,7 +50,7 @@ fun NavGraphNavigate(database: AppDatabase, context : Context, mainplants : List
             EditScreen(mainplants)
         }
         composable("InfoScreen") {
-            InfoScreen(navController = navController)
+            InfoScreen()
         }
         composable("RecepiesScreen") {
             RecepiesScreen(navController = navController)

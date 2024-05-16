@@ -90,7 +90,7 @@ fun MainScreen(context : Context, mainplants : List<Int>, navController: NavCont
                                     horizontalAlignment = Alignment.CenterHorizontally,
                                 ){
                                     Icon(
-                                        painter = painterResource(id = R.drawable.baseline_language_24),
+                                        painter = painterResource(id = R.drawable.earth),
                                         contentDescription = null,
                                         tint = colorResource(id = R.color.statusBarColor),
                                         modifier = Modifier
