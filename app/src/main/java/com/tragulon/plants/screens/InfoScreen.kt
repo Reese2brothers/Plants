@@ -32,6 +32,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -52,14 +53,22 @@ import com.tragulon.plants.R
 @Preview(showBackground = true)
 @Composable
 fun InfoScreen() {
-    var expanded1 by remember { mutableStateOf(false) }
-    var subExpanded1 by remember { mutableStateOf(false) }
-    var subExpanded2 by remember { mutableStateOf(false) }
-    var subsub1 by remember { mutableStateOf(false) }
-    var subsub2 by remember { mutableStateOf(false) }
-    var subsub3 by remember { mutableStateOf(false) }
-    var subsub4 by remember { mutableStateOf(false) }
-    var expanded2 by remember { mutableStateOf(false) }
+    var expanded1 = rememberSaveable { mutableStateOf(false) }
+    var subExpanded1 = rememberSaveable { mutableStateOf(false) }
+    var subExpanded2 = rememberSaveable { mutableStateOf(false) }
+    var subsub1 = rememberSaveable { mutableStateOf(false) }
+    var subsub2 = rememberSaveable { mutableStateOf(false) }
+    var subsub3 = rememberSaveable { mutableStateOf(false) }
+    var subsub4 = rememberSaveable { mutableStateOf(false) }
+    var subsub5 = rememberSaveable { mutableStateOf(false) }
+    var subsub6 = rememberSaveable { mutableStateOf(false) }
+    var subsub7 = rememberSaveable { mutableStateOf(false) }
+    var subsub8 = rememberSaveable { mutableStateOf(false) }
+    var subsub9 = rememberSaveable { mutableStateOf(false) }
+    var subsub10 = rememberSaveable { mutableStateOf(false) }
+    var subsub11 = rememberSaveable { mutableStateOf(false) }
+    var subsub12 = rememberSaveable { mutableStateOf(false) }
+    var expanded2 by rememberSaveable { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -88,50 +97,50 @@ fun InfoScreen() {
             ) {
                 Text("Значение растений для синтеза биологически активных веществ",
                     Modifier
-                        .clickable { expanded1 = !expanded1 }
+                        .clickable { expanded1.value = !expanded1.value }
                         .padding(top = 8.dp, start = 8.dp, end = 8.dp),
                             textAlign = TextAlign.Start, fontSize = 21.sp,
                     fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
-                if (expanded1) {
+                if (expanded1.value) {
                     Column(modifier = Modifier.padding(start = 8.dp)) {
                         Text("- Первичные органические соединения",
                             Modifier
-                                .clickable { subExpanded1 = !subExpanded1 }
+                                .clickable { subExpanded1.value = !subExpanded1.value }
                                 .padding(start = 16.dp),
                             textAlign = TextAlign.Start, fontSize = 18.sp,
                             fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
-                        if(subExpanded1){
+                        if(subExpanded1.value){
                             Column(
                                 modifier = Modifier.padding(start = 32.dp)
                             ) {
-                                Text("- Полисахариды", Modifier.clickable { subsub1 = !subsub1 },
+                                Text("- Полисахариды", Modifier.clickable { subsub1.value = !subsub1.value },
                                     textAlign = TextAlign.Start, fontSize = 15.sp,
                                     fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
-                                if(subsub1){
+                                if(subsub1.value){
                                    Text(text = stringResource(id = R.string.polisaharidi), Modifier.padding(start = 16.dp, end = 8.dp),
                                        textAlign = TextAlign.Start, fontSize = 12.sp,
                                        fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
                                 }
-                                Text("- Гомополисахариды", Modifier.clickable { subsub2 = !subsub2 },
+                                Text("- Гомополисахариды", Modifier.clickable { subsub2.value = !subsub2.value },
                                     textAlign = TextAlign.Start, fontSize = 15.sp,
                                     fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
-                                if(subsub2){
+                                if(subsub2.value){
                                     Text(text = stringResource(id = R.string.gomopolisaharidi), Modifier.padding(start = 16.dp, end = 8.dp),
                                         textAlign = TextAlign.Start, fontSize = 12.sp,
                                         fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
                                 }
-                                Text("- Гетерополисахариды", Modifier.clickable { subsub3 = !subsub3 },
+                                Text("- Гетерополисахариды", Modifier.clickable { subsub3.value = !subsub3.value },
                                     textAlign = TextAlign.Start, fontSize = 15.sp,
                                     fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
-                                if(subsub3){
+                                if(subsub3.value){
                                     Text(text = stringResource(id = R.string.geteropolisaharidi), Modifier.padding(start = 16.dp, end = 8.dp),
                                         textAlign = TextAlign.Start, fontSize = 12.sp,
                                         fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
                                 }
-                                Text("- Белки", Modifier.clickable { subsub4 = !subsub4 },
+                                Text("- Белки", Modifier.clickable { subsub4.value = !subsub4.value },
                                     textAlign = TextAlign.Start, fontSize = 15.sp,
                                     fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
-                                if(subsub4){
+                                if(subsub4.value){
                                     Text(text = stringResource(id = R.string.belki), Modifier.padding(start = 16.dp, end = 8.dp),
                                         textAlign = TextAlign.Start, fontSize = 12.sp,
                                         fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
@@ -140,22 +149,78 @@ fun InfoScreen() {
                         }
                         Text("- Вторичные органические соединения",
                             Modifier
-                                .clickable { subExpanded2 = !subExpanded2 }
+                                .clickable { subExpanded2.value = !subExpanded2.value }
                                 .padding(start = 16.dp, end = 8.dp),
                             textAlign = TextAlign.Start, fontSize = 18.sp,
                             fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
-                        if(subExpanded2){
+                        if(subExpanded2.value){
                             Column(
                                 modifier = Modifier.padding(start = 32.dp)
                             ) {
-                                Text("- Гликозиды", Modifier)
-                                Text("- Дубильные вещества(танины)", Modifier)
-                                Text("- Алкалоиды", Modifier)
-                                Text("- Эфирные масла", Modifier)
-                                Text("- Витамины", Modifier)
-                                Text("- Энзимы (ферменты)", Modifier)
-                                Text("- Фитонциды", Modifier)
-                                Text("- Микроэлементы", Modifier)
+                                Text("- Гликозиды", Modifier.clickable { subsub5.value = !subsub5.value },
+                                    textAlign = TextAlign.Start, fontSize = 15.sp,
+                                    fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                if(subsub5.value){
+                                    Text(text = stringResource(id = R.string.glikozidi), Modifier.padding(start = 16.dp, end = 8.dp),
+                                        textAlign = TextAlign.Start, fontSize = 12.sp,
+                                        fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                }
+                                Text("- Дубильные вещества(танины)", Modifier.clickable { subsub6.value = !subsub6.value },
+                                    textAlign = TextAlign.Start, fontSize = 15.sp,
+                                    fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                 if(subsub6.value){
+                                    Text(text = stringResource(id = R.string.dubilnie), Modifier.padding(start = 16.dp, end = 8.dp),
+                                        textAlign = TextAlign.Start, fontSize = 12.sp,
+                                        fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                }
+                                Text("- Алкалоиды", Modifier.clickable { subsub7.value = !subsub7.value },
+                                    textAlign = TextAlign.Start, fontSize = 15.sp,
+                                    fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                 if(subsub7.value){
+                                    Text(text = stringResource(id = R.string.alkaloidi), Modifier.padding(start = 16.dp, end = 8.dp),
+                                        textAlign = TextAlign.Start, fontSize = 12.sp,
+                                        fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                }
+                                Text("- Эфирные масла", Modifier.clickable { subsub8.value = !subsub8.value },
+                                    textAlign = TextAlign.Start, fontSize = 15.sp,
+                                    fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                 if(subsub8.value){
+                                    Text(text = stringResource(id = R.string.efirnie_masla), Modifier.padding(start = 16.dp, end = 8.dp),
+                                        textAlign = TextAlign.Start, fontSize = 12.sp,
+                                        fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                }
+                                Text("- Витамины", Modifier.clickable { subsub9.value = !subsub9.value },
+                                    textAlign = TextAlign.Start, fontSize = 15.sp,
+                                    fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                 if(subsub9.value){
+                                    Text(text = stringResource(id = R.string.vitamini), Modifier.padding(start = 16.dp, end = 8.dp),
+                                        textAlign = TextAlign.Start, fontSize = 12.sp,
+                                        fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                }
+                                Text("- Энзимы (ферменты)", Modifier.clickable { subsub10.value = !subsub10.value },
+                                    textAlign = TextAlign.Start, fontSize = 15.sp,
+                                    fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                 if(subsub10.value){
+                                    Text(text = "sub5", Modifier.padding(start = 16.dp, end = 8.dp),
+                                        textAlign = TextAlign.Start, fontSize = 12.sp,
+                                        fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                }
+                                Text("- Фитонциды", Modifier.clickable { subsub11.value = !subsub11.value },
+                                    textAlign = TextAlign.Start, fontSize = 15.sp,
+                                    fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                 if(subsub11.value){
+                                    Text(text = "sub5", Modifier.padding(start = 16.dp, end = 8.dp),
+                                        textAlign = TextAlign.Start, fontSize = 12.sp,
+                                        fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                }
+                                Text("- Микроэлементы", Modifier.clickable { subsub12.value = !subsub12.value },
+                                    textAlign = TextAlign.Start, fontSize = 15.sp,
+                                    fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                 if(subsub12.value){
+                                    Text(text = "sub5", Modifier.padding(start = 16.dp, end = 8.dp),
+                                        textAlign = TextAlign.Start, fontSize = 12.sp,
+                                        fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor))
+                                }
                             }
                         }
                     }

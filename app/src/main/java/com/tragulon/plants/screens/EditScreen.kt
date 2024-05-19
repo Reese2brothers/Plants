@@ -68,9 +68,7 @@ fun EditScreen(mainplants : List<Int>) {
     }
 
     Box (
-    modifier = Modifier
-        .fillMaxSize()
-        .verticalScroll(rememberScrollState())
+    modifier = Modifier.fillMaxSize()
 ){
     Card(
         modifier = Modifier
