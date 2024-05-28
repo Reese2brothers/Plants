@@ -7,6 +7,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandIn
 import androidx.compose.animation.shrinkOut
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -31,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -503,7 +505,7 @@ fun InfoScreen() {
                         modifier = Modifier.padding(top = 8.dp, start = 48.dp)
                     ) {
                         Text(
-                            "Подстрока 1",
+                            stringResource(id = R.string.konservirovanie_i_stabilizacia_trav),
                             textAlign = TextAlign.Start,
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
@@ -544,7 +546,7 @@ fun InfoScreen() {
                         modifier = Modifier.padding(top = 8.dp, start = 48.dp)
                     ) {
                         Text(
-                            "Подстрока 1",
+                            stringResource(id = R.string.sushka_trav),
                             textAlign = TextAlign.Start,
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
@@ -594,7 +596,7 @@ fun InfoScreen() {
                         )
                         if (subsub13.value) {
                             Text(
-                                text = "stringResource(id = R.string.glikozidi)",
+                                stringResource(id = R.string.pochki),
                                 Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 12.sp,
@@ -611,14 +613,79 @@ fun InfoScreen() {
                             color = colorResource(id = R.color.statusBarColor)
                         )
                         if (subsub14.value) {
-                            Text(
-                                text = "stringResource(id = R.string.dubilnie)",
-                                Modifier.padding(start = 16.dp, end = 8.dp),
-                                textAlign = TextAlign.Start,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = colorResource(id = R.color.statusBarColor)
-                            )
+                            Column(
+                                verticalArrangement = Arrangement.Top,
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Text(
+                                    text = stringResource(id = R.string.cvetki),
+                                    Modifier.padding(start = 16.dp, end = 8.dp),
+                                    textAlign = TextAlign.Start,
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = colorResource(id = R.color.statusBarColor)
+                                )
+                                Image(painter = painterResource(id = R.drawable.stroeniecvetka), contentDescription = "stroeniecvetka",
+                                    Modifier.padding(end = 8.dp))
+                                Text("Рис.1  Строение цветка",  Modifier.padding(start = 16.dp, end = 8.dp),
+                                    textAlign = TextAlign.Start,
+                                    fontSize = 10.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = colorResource(id = R.color.statusBarColor))
+                                Text(
+                                    text = stringResource(id = R.string.cvetki2),
+                                    Modifier.padding(start = 16.dp, end = 8.dp),
+                                    textAlign = TextAlign.Start,
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = colorResource(id = R.color.statusBarColor)
+                                )
+                                Image(painter = painterResource(id = R.drawable.formicvetka), contentDescription = "formicvetka",
+                                    Modifier.padding(end = 8.dp))
+                                Text("Рис.2  Разновидности цветков по форме",  Modifier.padding(start = 16.dp, end = 8.dp),
+                                    textAlign = TextAlign.Start,
+                                    fontSize = 10.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = colorResource(id = R.color.statusBarColor))
+                                Text(
+                                    text = stringResource(id = R.string.cvetki3),
+                                    Modifier.padding(start = 16.dp, end = 8.dp),
+                                    textAlign = TextAlign.Start,
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = colorResource(id = R.color.statusBarColor)
+                                )
+                                Image(painter = painterResource(id = R.drawable.vidizaviazy), contentDescription = "vidizaviazy",
+                                    Modifier.padding(end = 8.dp))
+                                Text("Рис.3  Виды завязи",  Modifier.padding(start = 16.dp, end = 8.dp),
+                                    textAlign = TextAlign.Start,
+                                    fontSize = 10.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = colorResource(id = R.color.statusBarColor))
+                                Text(
+                                    text = stringResource(id = R.string.cvetki4),
+                                    Modifier.padding(start = 16.dp, end = 8.dp),
+                                    textAlign = TextAlign.Start,
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = colorResource(id = R.color.statusBarColor)
+                                )
+                                Image(painter = painterResource(id = R.drawable.vidisocvetiy), contentDescription = "vidisocvetiy",
+                                    Modifier.padding(end = 8.dp))
+                                Text("Рис.4  Виды соцветий",  Modifier.padding(start = 16.dp, end = 8.dp),
+                                    textAlign = TextAlign.Start,
+                                    fontSize = 10.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = colorResource(id = R.color.statusBarColor))
+                                Text(
+                                    text = stringResource(id = R.string.cvetki5),
+                                    Modifier.padding(start = 16.dp, end = 8.dp),
+                                    textAlign = TextAlign.Start,
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = colorResource(id = R.color.statusBarColor)
+                                )
+                            }
                         }
                         Text(
                             "- Листья - распознавание и сбор",

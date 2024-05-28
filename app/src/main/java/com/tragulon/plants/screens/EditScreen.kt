@@ -1,8 +1,14 @@
 package com.tragulon.plants.screens
 
+import android.app.Activity
+import android.content.Intent
+import android.speech.RecognizerIntent
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -42,6 +48,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -62,6 +69,22 @@ fun EditScreen(mainplants : List<Int>) {
     val viewModel: EditViewModel = hiltViewModel()
     val currentText = rememberSaveable { mutableStateOf("") }
     var showIdDialog = remember { mutableStateOf(false) }
+
+    val context = LocalContext.current
+    val speechIntent2 = remember {
+        Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+            putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+            putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, context.packageName)
+        }
+    }
+    val launcher2 = rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val matches = result.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+            if (matches != null && matches.isNotEmpty()) {
+                currentText.value += " " + matches[0]
+            }
+        }
+    }
 
     LaunchedEffect(key1 = viewModel) {
         viewModel.loadInitialData(currentText)
@@ -113,8 +136,11 @@ fun EditScreen(mainplants : List<Int>) {
                 ) {
                     Text("Пишите здесь...", color = colorResource(id = R.color.orange))
                     Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
+                        Image(painter = painterResource(id = R.drawable.baseline_mic_24), contentDescription = "mic",
+                            Modifier.padding(end = 8.dp, bottom = 8.dp).clickable { launcher2.launch(speechIntent2) })
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally,
                             modifier = Modifier.padding(end = 8.dp)
