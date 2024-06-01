@@ -6,10 +6,12 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CornerSize
@@ -24,8 +26,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.imageResource
@@ -625,8 +630,14 @@ fun InfoScreen() {
                                     fontWeight = FontWeight.Bold,
                                     color = colorResource(id = R.color.statusBarColor)
                                 )
-                                Image(painter = painterResource(id = R.drawable.stroeniecvetka), contentDescription = "stroeniecvetka",
-                                    Modifier.padding(end = 8.dp))
+                                Box(
+                                    modifier = Modifier
+                                        .size(300.dp, 200.dp)
+                                ) {
+                                    Image(painter = painterResource(id = R.drawable.stroeniecvetka), contentDescription = "stroeniecvetka",
+                                        Modifier.fillMaxSize(),
+                                        contentScale = ContentScale.Fit)
+                                }
                                 Text("Рис.1  Строение цветка",  Modifier.padding(start = 16.dp, end = 8.dp),
                                     textAlign = TextAlign.Start,
                                     fontSize = 10.sp,
@@ -640,8 +651,14 @@ fun InfoScreen() {
                                     fontWeight = FontWeight.Bold,
                                     color = colorResource(id = R.color.statusBarColor)
                                 )
-                                Image(painter = painterResource(id = R.drawable.formicvetka), contentDescription = "formicvetka",
-                                    Modifier.padding(end = 8.dp))
+                                Box(
+                                    modifier = Modifier
+                                        .size(300.dp, 400.dp)
+                                ) {
+                                    Image(painter = painterResource(id = R.drawable.formicvetka), contentDescription = "formicvetka",
+                                        Modifier.fillMaxSize(),
+                                        contentScale = ContentScale.Fit)
+                                }
                                 Text("Рис.2  Разновидности цветков по форме",  Modifier.padding(start = 16.dp, end = 8.dp),
                                     textAlign = TextAlign.Start,
                                     fontSize = 10.sp,
@@ -655,8 +672,14 @@ fun InfoScreen() {
                                     fontWeight = FontWeight.Bold,
                                     color = colorResource(id = R.color.statusBarColor)
                                 )
-                                Image(painter = painterResource(id = R.drawable.vidizaviazy), contentDescription = "vidizaviazy",
-                                    Modifier.padding(end = 8.dp))
+                                Box(
+                                    modifier = Modifier
+                                        .size(300.dp, 200.dp)
+                                ) {
+                                    Image(painter = painterResource(id = R.drawable.vidizaviazy), contentDescription = "vidizaviazy",
+                                        Modifier.fillMaxSize(),
+                                        contentScale = ContentScale.Fit)
+                                }
                                 Text("Рис.3  Виды завязи",  Modifier.padding(start = 16.dp, end = 8.dp),
                                     textAlign = TextAlign.Start,
                                     fontSize = 10.sp,
@@ -670,8 +693,14 @@ fun InfoScreen() {
                                     fontWeight = FontWeight.Bold,
                                     color = colorResource(id = R.color.statusBarColor)
                                 )
-                                Image(painter = painterResource(id = R.drawable.vidisocvetiy), contentDescription = "vidisocvetiy",
-                                    Modifier.padding(end = 8.dp))
+                                Box(
+                                    modifier = Modifier
+                                        .size(300.dp, 200.dp)
+                                ) {
+                                    Image(painter = painterResource(id = R.drawable.vidisocvetiy), contentDescription = "vidisocvetiy",
+                                        Modifier.fillMaxSize(),
+                                        contentScale = ContentScale.Fit)
+                                }
                                 Text("Рис.4  Виды соцветий",  Modifier.padding(start = 16.dp, end = 8.dp),
                                     textAlign = TextAlign.Start,
                                     fontSize = 10.sp,
@@ -704,8 +733,14 @@ fun InfoScreen() {
                                 fontWeight = FontWeight.Bold,
                                 color = colorResource(id = R.color.statusBarColor)
                             )
-                            Image(painter = painterResource(id = R.drawable.riznovidilistkiv), contentDescription = "riznovidilistkiv",
-                                Modifier.padding(end = 8.dp))
+                            Box(
+                                modifier = Modifier
+                                    .size(300.dp, 400.dp)
+                            ) {
+                                Image(painter = painterResource(id = R.drawable.riznovidilistkiv), contentDescription = "riznovidilistkiv",
+                                    Modifier.fillMaxSize(),
+                                    contentScale = ContentScale.Fit)
+                            }
                             Text("Рис.1  Разновидности листьев",  Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 10.sp,
@@ -719,15 +754,27 @@ fun InfoScreen() {
                                 fontWeight = FontWeight.Bold,
                                 color = colorResource(id = R.color.statusBarColor)
                             )
-                            Image(painter = painterResource(id = R.drawable.roztashuvanielistkiv), contentDescription = "roztashuvanielistkiv",
-                                Modifier.padding(end = 8.dp))
+                            Box(
+                                modifier = Modifier
+                                    .size(300.dp, 200.dp)
+                            ) {
+                                Image(painter = painterResource(id = R.drawable.roztashuvanielistkiv), contentDescription = "roztashuvanielistkiv",
+                                    Modifier.fillMaxSize(),
+                                    contentScale = ContentScale.Fit)
+                            }
                             Text("Рис.2  Расположение листьев",  Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 10.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = colorResource(id = R.color.statusBarColor))
-                            Image(painter = painterResource(id = R.drawable.prikriplennialistkiv), contentDescription = "prikriplennialistkiv",
-                                Modifier.padding(end = 8.dp))
+                            Box(
+                                modifier = Modifier
+                                    .size(300.dp, 400.dp)
+                            ) {
+                                Image(painter = painterResource(id = R.drawable.prikriplennialistkiv), contentDescription = "prikriplennialistkiv",
+                                    Modifier.fillMaxSize(),
+                                    contentScale = ContentScale.Fit)
+                            }
                             Text("Рис.3  Виды листьев по способу прикрепления к стеблю",  Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 10.sp,
@@ -741,8 +788,14 @@ fun InfoScreen() {
                                 fontWeight = FontWeight.Bold,
                                 color = colorResource(id = R.color.statusBarColor)
                             )
-                            Image(painter = painterResource(id = R.drawable.prostielistki), contentDescription = "prostielistki",
-                                Modifier.padding(end = 8.dp))
+                            Box(
+                                modifier = Modifier
+                                    .size(300.dp, 250.dp)
+                            ) {
+                                Image(painter = painterResource(id = R.drawable.prostielistki), contentDescription = "prostielistki",
+                                    Modifier.fillMaxSize(),
+                                    contentScale = ContentScale.Fit)
+                            }
                             Text("Рис.4  Расчлененность листьевой пластинки у простых листьев",  Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 10.sp,
@@ -756,8 +809,14 @@ fun InfoScreen() {
                                 fontWeight = FontWeight.Bold,
                                 color = colorResource(id = R.color.statusBarColor)
                             )
-                            Image(painter = painterResource(id = R.drawable.skladnilistki), contentDescription = "skladnilistki",
-                                Modifier.padding(end = 8.dp))
+                            Box(
+                                modifier = Modifier
+                                    .size(300.dp, 400.dp)
+                            ) {
+                                Image(painter = painterResource(id = R.drawable.skladnilistki), contentDescription = "skladnilistki",
+                                    Modifier.fillMaxSize(),
+                                    contentScale = ContentScale.Fit)
+                            }
                             Text("Рис.5  Сложные листья",  Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 10.sp,
@@ -807,8 +866,14 @@ fun InfoScreen() {
                                 fontWeight = FontWeight.Bold,
                                 color = colorResource(id = R.color.statusBarColor)
                             )
-                            Image(painter = painterResource(id = R.drawable.vidikornevoisistemi), contentDescription = "vidikornevoisistemi",
-                                Modifier.padding(end = 8.dp))
+                            Box(
+                                modifier = Modifier
+                                    .size(300.dp, 200.dp)
+                            ) {
+                                Image(painter = painterResource(id = R.drawable.vidikornevoisistemi), contentDescription = "vidikornevoisistemi",
+                                    Modifier.fillMaxSize(),
+                                    contentScale = ContentScale.Fit)
+                            }
                             Text("Рис.1  Виды корневой системы",  Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 10.sp,
@@ -822,8 +887,14 @@ fun InfoScreen() {
                                 fontWeight = FontWeight.Bold,
                                 color = colorResource(id = R.color.statusBarColor)
                             )
-                            Image(painter = painterResource(id = R.drawable.vidipidzemnihorganiv), contentDescription = "vidipidzemnihorganiv",
-                                Modifier.padding(end = 8.dp))
+                            Box(
+                                modifier = Modifier
+                                    .size(300.dp, 400.dp)
+                            ) {
+                                Image(painter = painterResource(id = R.drawable.vidipidzemnihorganiv), contentDescription = "vidipidzemnihorganiv",
+                                    Modifier.fillMaxSize(),
+                                    contentScale = ContentScale.Fit)
+                            }
                             Text("Рис.2  Виды подземных органов",  Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 10.sp,
@@ -837,8 +908,14 @@ fun InfoScreen() {
                                 fontWeight = FontWeight.Bold,
                                 color = colorResource(id = R.color.statusBarColor)
                             )
-                            Image(painter = painterResource(id = R.drawable.vidozminenikorni), contentDescription = "vidozminenikorni",
-                                Modifier.padding(end = 8.dp))
+                            Box(
+                                modifier = Modifier
+                                    .size(300.dp, 200.dp)
+                            ) {
+                                Image(painter = painterResource(id = R.drawable.vidozminenikorni), contentDescription = "vidozminenikorni",
+                                    Modifier.fillMaxSize(),
+                                    contentScale = ContentScale.Fit)
+                            }
                             Text("Рис.3  Видоизмененные корни",  Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 10.sp,
@@ -870,8 +947,14 @@ fun InfoScreen() {
                                 fontWeight = FontWeight.Bold,
                                 color = colorResource(id = R.color.statusBarColor)
                             )
-                            Image(painter = painterResource(id = R.drawable.suhiplodi), contentDescription = "suhiplodi",
-                                Modifier.padding(end = 8.dp))
+                            Box(
+                                modifier = Modifier
+                                    .size(300.dp, 400.dp)
+                            ) {
+                                Image(painter = painterResource(id = R.drawable.suhiplodi), contentDescription = "suhiplodi",
+                                    Modifier.fillMaxSize(),
+                                    contentScale = ContentScale.Fit)
+                            }
                             Text("Рис.1  Сухие плоды",  Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 10.sp,
@@ -885,8 +968,15 @@ fun InfoScreen() {
                                 fontWeight = FontWeight.Bold,
                                 color = colorResource(id = R.color.statusBarColor)
                             )
-                            Image(painter = painterResource(id = R.drawable.sokovitiplodi), contentDescription = "sokovitiplodi",
-                                Modifier.padding(end = 8.dp))
+                            Box(
+                                modifier = Modifier
+                                    .size(300.dp, 500.dp)
+                            ) {
+                                Image(painter = painterResource(id = R.drawable.sokovitiplodi), contentDescription = "sokovitiplodi",
+                                    Modifier.fillMaxSize(),
+                                    contentScale = ContentScale.Fit)
+                            }
+
                             Text("Рис.2  Сочные плоды",  Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 10.sp,

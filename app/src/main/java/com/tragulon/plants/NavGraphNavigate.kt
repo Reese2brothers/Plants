@@ -21,6 +21,7 @@ import com.tragulon.plants.screens.herbs.ScreenHA
 import com.tragulon.plants.screens.herbs.ScreenHЩ
 import com.tragulon.plants.screens.herbs.screenshadetails.ScreenAirDetails
 import com.tragulon.plants.screens.herbs.screenshadetails.ScreenAltheaDetails
+import com.tragulon.plants.screens.herbs.screenshadetails.ScreenAnisDetails
 import com.tragulon.plants.screens.mushrooms.ScreenMA
 import com.tragulon.plants.screens.trees.ScreenTA
 
@@ -62,7 +63,7 @@ fun NavGraphNavigate(database: AppDatabase, context : Context, mainplants : List
             RecepiesDetailsScreen(backStackEntry, navController = navController)
         }
         composable("ScreenHA") {
-            ScreenHA(navController = navController)
+            ScreenHA(navController = navController, context)
         }
         composable("ScreenHЩ") {
             ScreenHЩ(navController = navController)
@@ -78,6 +79,9 @@ fun NavGraphNavigate(database: AppDatabase, context : Context, mainplants : List
         }
         composable("ScreenAltheaDetails") {
             ScreenAltheaDetails()
+        }
+        composable("ScreenAnisDetails") {
+            ScreenAnisDetails()
         }
     }
 }

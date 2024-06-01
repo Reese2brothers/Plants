@@ -1,5 +1,7 @@
 package com.tragulon.plants.screens.herbs
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -37,6 +39,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -51,11 +54,12 @@ import okhttp3.internal.filterList
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ScreenHA(navController: NavController){
-    val listHA = listOf("Аир обыкновенный", "Алтей лекарственный")
-    val listImageHA = listOf(R.drawable.air, R.drawable.althea)
+fun ScreenHA(navController: NavController, context : Context){
+    val listHA = listOf("Аир обыкновенный", "Алтей лекарственный", "Анис обыкновенный")
+    val listImageHA = listOf(R.drawable.air, R.drawable.althea, R.drawable.a_anis)
     val searchText by rememberSaveable { mutableStateOf("") }
     var filteredList by remember { mutableStateOf(listHA) }
+
 
     LaunchedEffect(searchText) {
         filteredList = listHA.filter { it.contains(searchText, ignoreCase = true) }
@@ -75,7 +79,7 @@ fun ScreenHA(navController: NavController){
                             1.dp,
                             color = colorResource(id = R.color.statusBarColor)
                         ),
-                        onClick = { navigateToScreenADetails(listHA[index], navController) })
+                        onClick = { navigateToScreenADetails(listHA[index], navController, context) })
                     {
                         Box(
                             modifier = Modifier.fillMaxSize()
@@ -109,11 +113,12 @@ fun ScreenHA(navController: NavController){
     }
 }
 
-private fun navigateToScreenADetails(a: String, navController : NavController) {
+private fun navigateToScreenADetails(a: String, navController : NavController, context: Context) {
     when (a) {
         "Аир обыкновенный" -> navController.navigate("ScreenAirDetails")
         "Алтей лекарственный" -> navController.navigate("ScreenAltheaDetails")
+        "Анис обыкновенный" -> navController.navigate("ScreenAnisDetails")
         // добавьте больше букв и экранов по мере необходимости
-        else -> println("Экран для буквы $a не найден")
+        else -> Toast.makeText(context, "Экран для $a не найден", Toast.LENGTH_SHORT).show()
     }
 }
