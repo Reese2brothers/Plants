@@ -1,11 +1,6 @@
 package com.tragulon.plants.screens
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.core.TweenSpec
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.expandIn
-import androidx.compose.animation.shrinkOut
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,12 +21,14 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -39,8 +36,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberAsyncImagePainter
+import coil.compose.rememberImagePainter
 import com.tragulon.plants.R
-import okhttp3.internal.checkDuration
+
 
 @OptIn(ExperimentalAnimationApi::class, ExperimentalMaterial3Api::class)
 @Preview(showBackground = true)
@@ -75,6 +74,7 @@ fun InfoScreen() {
     var expanded4 = rememberSaveable { mutableStateOf(false) }
     var expanded5 = rememberSaveable { mutableStateOf(false) }
     var expanded6 = rememberSaveable { mutableStateOf(false) }
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier
@@ -697,7 +697,74 @@ fun InfoScreen() {
                         )
                         if (subsub15.value) {
                             Text(
-                                text = "stringResource(id = R.string.alkaloidi)",
+                                text = stringResource(id = R.string.listki),
+                                Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor)
+                            )
+                            Image(painter = painterResource(id = R.drawable.riznovidilistkiv), contentDescription = "riznovidilistkiv",
+                                Modifier.padding(end = 8.dp))
+                            Text("Рис.1  Разновидности листьев",  Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor))
+                            Text(
+                                text = stringResource(id = R.string.listki2),
+                                Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor)
+                            )
+                            Image(painter = painterResource(id = R.drawable.roztashuvanielistkiv), contentDescription = "roztashuvanielistkiv",
+                                Modifier.padding(end = 8.dp))
+                            Text("Рис.2  Расположение листьев",  Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor))
+                            Image(painter = painterResource(id = R.drawable.prikriplennialistkiv), contentDescription = "prikriplennialistkiv",
+                                Modifier.padding(end = 8.dp))
+                            Text("Рис.3  Виды листьев по способу прикрепления к стеблю",  Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor))
+                            Text(
+                                text = stringResource(id = R.string.listki3),
+                                Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor)
+                            )
+                            Image(painter = painterResource(id = R.drawable.prostielistki), contentDescription = "prostielistki",
+                                Modifier.padding(end = 8.dp))
+                            Text("Рис.4  Расчлененность листьевой пластинки у простых листьев",  Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor))
+                            Text(
+                                text = stringResource(id = R.string.listki4),
+                                Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor)
+                            )
+                            Image(painter = painterResource(id = R.drawable.skladnilistki), contentDescription = "skladnilistki",
+                                Modifier.padding(end = 8.dp))
+                            Text("Рис.5  Сложные листья",  Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor))
+                            Text(
+                                text = stringResource(id = R.string.listki5),
                                 Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 12.sp,
@@ -715,7 +782,7 @@ fun InfoScreen() {
                         )
                         if (subsub16.value) {
                             Text(
-                                text = "stringResource(id = R.string.efirnie_masla)",
+                                text = stringResource(id = R.string.stebli),
                                 Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 12.sp,
@@ -733,7 +800,52 @@ fun InfoScreen() {
                         )
                         if (subsub17.value) {
                             Text(
-                                text = "stringResource(id = R.string.vitamini)",
+                                text = stringResource(id = R.string.korni),
+                                Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor)
+                            )
+                            Image(painter = painterResource(id = R.drawable.vidikornevoisistemi), contentDescription = "vidikornevoisistemi",
+                                Modifier.padding(end = 8.dp))
+                            Text("Рис.1  Виды корневой системы",  Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor))
+                            Text(
+                                text = stringResource(id = R.string.korni2),
+                                Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor)
+                            )
+                            Image(painter = painterResource(id = R.drawable.vidipidzemnihorganiv), contentDescription = "vidipidzemnihorganiv",
+                                Modifier.padding(end = 8.dp))
+                            Text("Рис.2  Виды подземных органов",  Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor))
+                            Text(
+                                text = stringResource(id = R.string.korni3),
+                                Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor)
+                            )
+                            Image(painter = painterResource(id = R.drawable.vidozminenikorni), contentDescription = "vidozminenikorni",
+                                Modifier.padding(end = 8.dp))
+                            Text("Рис.3  Видоизмененные корни",  Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor))
+                            Text(
+                                text = stringResource(id = R.string.korni4),
                                 Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 12.sp,
@@ -751,7 +863,37 @@ fun InfoScreen() {
                         )
                         if (subsub18.value) {
                             Text(
-                                text = "stringResource(id = R.string.vitamini2)",
+                                text = stringResource(id = R.string.plodi_i_semena),
+                                Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor)
+                            )
+                            Image(painter = painterResource(id = R.drawable.suhiplodi), contentDescription = "suhiplodi",
+                                Modifier.padding(end = 8.dp))
+                            Text("Рис.1  Сухие плоды",  Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor))
+                            Text(
+                                text = stringResource(id = R.string.plodi_i_semena2),
+                                Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor)
+                            )
+                            Image(painter = painterResource(id = R.drawable.sokovitiplodi), contentDescription = "sokovitiplodi",
+                                Modifier.padding(end = 8.dp))
+                            Text("Рис.2  Сочные плоды",  Modifier.padding(start = 16.dp, end = 8.dp),
+                                textAlign = TextAlign.Start,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.statusBarColor))
+                            Text(
+                                text = stringResource(id = R.string.plodi_i_semena3),
                                 Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 12.sp,
@@ -769,7 +911,7 @@ fun InfoScreen() {
                         )
                         if (subsub19.value) {
                             Text(
-                                text = "7777",
+                                text = stringResource(id = R.string.kora),
                                 Modifier.padding(start = 16.dp, end = 8.dp),
                                 textAlign = TextAlign.Start,
                                 fontSize = 12.sp,
