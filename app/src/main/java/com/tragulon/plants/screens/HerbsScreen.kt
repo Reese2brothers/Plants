@@ -93,6 +93,8 @@ fun HerbsScreen(navController: NavController) {
 private fun navigateToScreen(s: String, navController : NavController) {
     when (s) {
         "А" -> navController.navigate("ScreenHA")
+        "Б" -> navController.navigate("ScreenHБ")
+        "В" -> navController.navigate("ScreenHВ")
         "Щ" -> navController.navigate("ScreenHЩ")
         // добавьте больше букв и экранов по мере необходимости
         else -> println("Экран для буквы $s не найден")

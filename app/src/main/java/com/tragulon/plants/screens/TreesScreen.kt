@@ -80,7 +80,7 @@ fun TreesScreen(navController: NavController) {
                                 textAlign = TextAlign.Start, fontSize = 32.sp,
                                 fontWeight = FontWeight.Bold, color = colorResource(id = R.color.statusBarColor)
                             )
-                            Image(painter = painterResource(id = R.drawable.fontrees), contentDescription = "fonmushrooms",
+                            Image(painter = painterResource(id = R.drawable.fontrees), contentDescription = "fontrees",
                                 modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
                         }
 
@@ -94,6 +94,7 @@ fun TreesScreen(navController: NavController) {
 private fun navigateToScreenTrees(sT: String, navController : NavController) {
     when (sT) {
         "А" -> navController.navigate("ScreenTA")
+        "Б" -> navController.navigate("ScreenTБ")
         // добавьте больше букв и экранов по мере необходимости
         else -> println("Экран для буквы $sT не найден")
     }
