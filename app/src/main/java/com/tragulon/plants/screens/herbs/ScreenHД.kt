@@ -42,20 +42,20 @@ import com.tragulon.plants.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ScreenHБ(navController: NavController, context : Context){
-    val listHБ = listOf("Барбарис обыкновенный", "Белладонна обыкновенная", "Буквица лекарственная")
-    val listImageHБ = listOf(R.drawable.b_barbaris, R.drawable.b_beladonna, R.drawable.b_bukvitsa)
+fun ScreenHД(navController: NavController, context : Context){
+    val listHД = listOf("Донник лекарственный")
+    val listImageHД = listOf(R.drawable.d_donnik)
     val searchText by rememberSaveable { mutableStateOf("") }
-    var filteredList by remember { mutableStateOf(listHБ) }
+    var filteredList by remember { mutableStateOf(listHД) }
 
 
     LaunchedEffect(searchText) {
-        filteredList = listHБ.filter { it.contains(searchText, ignoreCase = true) }
+        filteredList = listHД.filter { it.contains(searchText, ignoreCase = true) }
     }
 
     Column {
         LazyColumn() {
-            itemsIndexed(filteredList) { index, itemHБ ->
+            itemsIndexed(filteredList) { index, itemHД ->
                 Card(modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -67,13 +67,13 @@ fun ScreenHБ(navController: NavController, context : Context){
                         1.dp,
                         color = colorResource(id = R.color.statusBarColor)
                     ),
-                    onClick = { navigateToScreenADetails(listHБ[index], navController, context) })
+                    onClick = { navigateToScreenADetails(listHД[index], navController, context) })
                 {
                     Box(
                         modifier = Modifier.fillMaxSize()
                     ) {
                         Image(
-                            painter = painterResource(id = listImageHБ[index]),
+                            painter = painterResource(id = listImageHД[index]),
                             contentDescription = "",
                             modifier = Modifier.fillMaxSize(),
                             contentScale = ContentScale.Crop
@@ -84,7 +84,7 @@ fun ScreenHБ(navController: NavController, context : Context){
                             modifier = Modifier.fillMaxSize()
                         ) {
                             Text(
-                                text = listHБ[index],
+                                text = listHД[index],
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .background(color = colorResource(id = R.color.lightStatusBarColor)),
@@ -101,12 +101,10 @@ fun ScreenHБ(navController: NavController, context : Context){
     }
 }
 
-private fun navigateToScreenADetails(б: String, navController : NavController, context: Context) {
-    when (б) {
-        "Барбарис обыкновенный" -> navController.navigate("ScreenBarbarisDetails")
-        "Белладонна обыкновенная" -> navController.navigate("ScreenBeladonnaDetails")
-        "Буквица лекарственная" -> navController.navigate("ScreenBukvitsaDetails")
+private fun navigateToScreenADetails(д: String, navController : NavController, context: Context) {
+    when (д) {
+        "Донник лекарственный" -> navController.navigate("ScreenDonnikDetails")
         // добавьте больше букв и экранов по мере необходимости
-        else -> Toast.makeText(context, "Экран для $б не найден", Toast.LENGTH_SHORT).show()
+        else -> Toast.makeText(context, "Экран для $д не найден", Toast.LENGTH_SHORT).show()
     }
 }

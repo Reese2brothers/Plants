@@ -95,6 +95,7 @@ private fun navigateToScreen(s: String, navController : NavController) {
         "А" -> navController.navigate("ScreenHA")
         "Б" -> navController.navigate("ScreenHБ")
         "В" -> navController.navigate("ScreenHВ")
+        "Д" -> navController.navigate("ScreenHД")
         "Щ" -> navController.navigate("ScreenHЩ")
         // добавьте больше букв и экранов по мере необходимости
         else -> println("Экран для буквы $s не найден")

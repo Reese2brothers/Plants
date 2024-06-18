@@ -43,8 +43,8 @@ import com.tragulon.plants.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenTБ(navController: NavController, context : Context){
-    val listTБ = listOf("Береза белая", )
-    val listImageTБ = listOf(R.drawable.b_bereza, )
+    val listTБ = listOf("Береза белая", "Бузина черная")
+    val listImageTБ = listOf(R.drawable.b_bereza, R.drawable.b_buzina)
     val searchText by rememberSaveable { mutableStateOf("") }
     var filteredList by remember { mutableStateOf(listTБ) }
 
@@ -104,6 +104,7 @@ fun ScreenTБ(navController: NavController, context : Context){
 private fun navigateToScreenБDetails(в: String, navController : NavController, context: Context) {
     when (в) {
         "Береза белая" -> navController.navigate("ScreenBerezaDetails")
+        "Бузина черная" -> navController.navigate("ScreenBuzinaBlackDetails")
         // добавьте больше букв и экранов по мере необходимости
         else -> Toast.makeText(context, "Экран для $в не найден", Toast.LENGTH_SHORT).show()
     }
